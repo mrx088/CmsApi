@@ -7,6 +7,7 @@ class Product(models.Model):
     price = models.IntegerField()
     count = models.IntegerField()
     description = models.TextField()
+    image = models.ImageField(upload_to='products/%Y/%m/%d/',blank=True,null=True)
     popularity = models.IntegerField(validators=[MinValueValidator(0),MaxValueValidator(100)])
     colors = models.SmallIntegerField()
     sale = models.IntegerField(null=True,blank=True)
