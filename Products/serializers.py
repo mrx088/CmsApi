@@ -3,6 +3,7 @@ from .models import Product
 
 
 class ProductsSeralizer(serializers.ModelSerializer):
+    image = serializers.ImageField(read_only=True)
     class Meta :
         model = Product
-        fields = '__all__'
+        exclude = ('created',)
