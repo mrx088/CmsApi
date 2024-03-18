@@ -19,9 +19,11 @@ class EditProduct(APIView):
         SrzData = ProductsSeralizer(data=request.data,instance=product,partial=True)
         if SrzData.is_valid():
             cd = SrzData.validated_data
-            product.slug = slugify(cd['title'])
-            product.save()
+            cd['slug'] = slugify(cd['title'])
             SrzData.save()
+            # product.slug = slugify(cd['title'])
+            # product.save()
+            # SrzData.save()
             return Response(SrzData.data,status=status.HTTP_200_OK)
         return Response(SrzData.errors,status=status.HTTP_400_BAD_REQUEST)
 
