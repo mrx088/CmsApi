@@ -15,6 +15,8 @@ class UserSeralizer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
 
     user = UserSeralizer(read_only=True)
+    created = serializers.DateTimeField(format="%d-%m-%Y")
+    hour = serializers.DateTimeField(format="%H:%M:%S")
 
 
     class Meta:
